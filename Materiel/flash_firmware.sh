@@ -1,6 +1,6 @@
 #!/bin/bash
 # Flash firmware
-espflash flash --flash-size 8mb firmware.bin
+espflash flash --flash-size 8mb firmware.elf
 
 # Flash NVS
 source ~/esp/esp-idf/export.sh
