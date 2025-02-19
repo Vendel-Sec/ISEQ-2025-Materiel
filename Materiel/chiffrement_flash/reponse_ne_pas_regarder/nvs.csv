@@ -1,0 +1,4 @@
+key,type,encoding,value
+storage,namespace
+SECRET_KEY,data,string,Deepen-Diffuser5-Wrought
+SECRET_PASSWORD,data,string,IsEq2O25
