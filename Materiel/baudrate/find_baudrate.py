@@ -16,8 +16,13 @@ def bruteforce_baudrate(port: str, baudrates: list[int]) -> int:
             # Ouvre une connexion au port série avec le baudrate
             with serial.Serial(port=port, baudrate=baudrate, timeout=0.2) as ser:
                 # TODO: tester si le baudrate est le bon
+                # Indice: utiliser la fonction is_ascii
+                # Pour envoyer des donnees:
+                # ser.write(b"data")
+                # Pour lire 100 octets:
+                # data = ser.read(100)
                 response = None
-                if False:
+                if False: # Remplacer False par votre condition
                     print(f"Réponse valide détectée pour le baudrate {baudrate}: {response}")
                     return baudrate
         except Exception as e:
@@ -36,6 +41,7 @@ if __name__ == "__main__":
     baudrates = []
 
     # TODO: ajouter des baudrates potentiels au tableau de baudrates
+    # baudrates.append(MAVALEUR)
     
     detected_baudrate = bruteforce_baudrate(serial_port, baudrates)
     if detected_baudrate != -1:
