@@ -64,9 +64,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       # TODO 6: ajouter la tache de trufflehog
       # Lien: https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action
       # - name: Secret Scanning
