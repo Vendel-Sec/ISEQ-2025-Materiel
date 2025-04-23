@@ -1,17 +1,37 @@
 # TODO 1: ajouter les directives generales
-# https://github.com/actions/starter-workflows/blob/main/ci/rust.yml
+# Lien: https://github.com/actions/starter-workflows/blob/main/ci/rust.yml
+# Lien: https://stackoverflow.com/a/65723433
+
+# name: <TODO>
+
+# on:
+#   push:
+#     branches: [ <TODO> ]
+#   pull_request:
+#     branches: [ <TODO> ]
+
+# env:
+#   <TODO>
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       # TODO 7: utiliser le secret
       # https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#using-secrets-in-a-workflow
       # - name: Write private key to file
+
       # TODO 2: ajouter les taches de compilation
-      # https://github.com/actions/starter-workflows/blob/main/ci/rust.yml
+      # Lien: https://github.com/actions/starter-workflows/blob/main/ci/rust.yml
+      # - name: Build
+      #   run: <TODO>
+      # - name: Run tests
+      #   run: <TODO>
+
 
   generate-sbom:
     name: Generate SBOM
@@ -19,30 +39,37 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
       # TODO 3: installer cargo-cyclonedx
-      # https://github.com/CycloneDX/cyclonedx-rust-cargo
+      # Lien: https://github.com/CycloneDX/cyclonedx-rust-cargo
       # - name: Install cargo-cyclonedx
-      #   run: 
+      #   run: <TODO>
+
       # TODO 4: generer le SBOM
-      # https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
+      # Lien: https://github.com/CycloneDX/cyclonedx-rust-cargo
       # - name: Generate SBOM
-      #   run: 
+      #   run: <TODO>
+
       # TODO 5: donner le bon nom pour l'artefact
-      # https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
-      # https://github.com/actions/upload-artifact#usage
+      # Lien: https://github.com/CycloneDX/cyclonedx-rust-cargo/blob/main/cargo-cyclonedx/README.md
+      # Lien: https://github.com/actions/upload-artifact#usage
       # - name: Upload SBOM as artifact
       #   uses: actions/upload-artifact@v4
       #   with:
-      #     name: sbom
-      #     path: 
+      #     name: sbom.xml
+      #     path: <TODO>
 
   trufflehog:
     name: TruffleHog
     runs-on: ubuntu-latest
-    # TODO 6: ajouter la tache de trufflehog
-    # https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action
-    # steps:
-    # - name: Checkout code
-    # - name: Secret Scanning
-    #   with:
-    #     head: ${{ github.ref_name }}
+    steps:
+      - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+      # TODO 6: ajouter la tache de trufflehog
+      # Lien: https://github.com/trufflesecurity/trufflehog#octocat-trufflehog-github-action
+      # - name: Secret Scanning
+      #   uses: <TODO>
+      #   with:
+      #     head: ${{ github.ref_name }}
